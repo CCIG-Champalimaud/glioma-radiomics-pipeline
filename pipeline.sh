@@ -1,4 +1,4 @@
-ROOT_FOLDER=/mnt/big_disk/data/glioma
+ROOT_FOLDER=/mnt/big_disk/data/gliomai
 OUTPUT_FOLDER=output
 N_JOBS=32
 IMAGES="brain_t1c brain_t1n brain_t2w brain_t2f"
@@ -7,10 +7,10 @@ for tp_id in preop postop
 do
     if [ $tp_id == "preop" ]; then
         INPUT_FOLDER=$ROOT_FOLDER/preop_scans
-        MASK_FOLDER=$ROOT_FOLDER/preop_masks_280825
+        MASK_FOLDER=$ROOT_FOLDER/gliomai_preop_masks_240925
     else
         INPUT_FOLDER=$ROOT_FOLDER/gliomai_postoperative
-        MASK_FOLDER=$ROOT_FOLDER/gliomai_postop_masks_290825
+        MASK_FOLDER=$ROOT_FOLDER/gliomai_postop_masks_240925
     fi
     for image in $IMAGES
     do 
