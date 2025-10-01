@@ -20,7 +20,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--suffixes",
         type=str,
-        help="Suffixes.",
+        help="List of suffixes appended to the column names of each dataframe. "
+        "Should have len(input_csvs).",
         required=True,
         nargs="+",
     )
