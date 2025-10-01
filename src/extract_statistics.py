@@ -1,3 +1,10 @@
+"""
+Entrypoint for extracting statistics from SITK-readable images.
+
+In particular, it calculates the minimum, maximum, shape and spacing of the 
+images to enable facilitated inspection of potential spatial/intensity artefacts.
+"""
+
 import pandas as pd
 import SimpleITK as sitk
 from tqdm import tqdm
@@ -8,6 +15,23 @@ from .extract_features import get_image_dict
 def calculate_statistics(
     input_folder: Path, identifier_pattern: Path, image_pattern: Path
 ) -> pd.DataFrame:
+    """
+    Calculate statistics for a set of images. The statistics are:
+
+    - min: Minimum value of the image.
+    - max: Maximum value of the image.
+    - shape: Shape of the image.
+    - spacing: Spacing of the image.
+
+    Args:
+        input_folder (Path): Path to the input folder.
+        identifier_pattern (Path): Pattern to extract the identifier from the
+            image path.
+        image_pattern (Path): Pattern to glob the images.
+
+    Returns:
+        pd.DataFrame: DataFrame with the statistics.
+    """
     image_dict = get_image_dict(input_folder, identifier_pattern, image_pattern)
 
     all_values = {}

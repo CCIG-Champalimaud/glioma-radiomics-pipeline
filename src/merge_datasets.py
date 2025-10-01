@@ -1,3 +1,7 @@
+"""
+Merges multiple CSV datasets using pandas.
+"""
+
 import pandas as pd
 from pathlib import Path
 
