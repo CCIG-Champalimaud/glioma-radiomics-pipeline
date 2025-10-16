@@ -44,6 +44,12 @@ if __name__ == "__main__":
         nargs="+",
         help="Keeps the values for this column only from the first dataframe",
     )
+    parser.add_argument(
+        "--reorder_columns",
+        type=str,
+        nargs="+",
+        help="Reorders the columns according to the specified identifiers. All others remain identical.",
+    )
 
     args = parser.parse_args()
 
@@ -74,4 +80,10 @@ if __name__ == "__main__":
         out_df = pd.merge(out_df, df, on=args.on, how="outer").sort_values(
             by=args.on
         )
+    if args.reorder_columns is not None:
+        all_columns = out_df.columns
+        reordered_columns = args.reorder_columns + [
+            col for col in all_columns if col not in args.reorder_columns
+        ]
+        out_df = out_df[reordered_columns]
     out_df.to_csv(args.output_path, index=False)
