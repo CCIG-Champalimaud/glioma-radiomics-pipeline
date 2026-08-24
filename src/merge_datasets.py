@@ -45,6 +45,11 @@ if __name__ == "__main__":
         help="Keeps the values for this column only from the first dataframe",
     )
     parser.add_argument(
+        "--identifier_to_pseudonym",
+        type=str,
+        help="Uses this file to replace the 'identifier' column with pseudonym values",
+    )
+    parser.add_argument(
         "--reorder_columns",
         type=str,
         nargs="+",
@@ -86,4 +91,13 @@ if __name__ == "__main__":
             col for col in all_columns if col not in args.reorder_columns
         ]
         out_df = out_df[reordered_columns]
+    if args.original_to_random is not None:
+        random_df = pd.read_excel(args.original_to_random)
+        conversion = {}
+        for _, row in random_df.iterrows():
+            conversion[int(row["orig_id"])] = int(row["random_id"])
+        out_df["identifier"] = [
+            conversion.get(x, "None") for x in out_df["identifier"]
+        ]
+        out_df = out_df[out_df["identifier"] != "None"]
     out_df.to_csv(args.output_path, index=False)
