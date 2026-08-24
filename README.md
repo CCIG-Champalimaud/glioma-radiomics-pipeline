@@ -1,6 +1,6 @@
 # Super simple feature extraction pipeline
 
-This is a super simple feature extraction pipeline for most kinds of images requiring feature extraction using SITK-readable images as input. It allows for the specification of patterns which filter images and masks using regular expressions, as well as the specification of patient/study identifiers in a similar manner and of a radiomics config file.
+This is a simple feature extraction pipeline for most kinds of images requiring feature extraction using SITK-readable images as input. It allows for the specification of patterns which filter images and masks using regular expressions, as well as the specification of patient/study identifiers in a similar manner and of a radiomics config file.
 
 If co-registration/resampling of multimodal imaging is necessary please consult [this more complex pipeline](https://github.com/CCIG-Champalimaud/radiomics-pipeline).
 
