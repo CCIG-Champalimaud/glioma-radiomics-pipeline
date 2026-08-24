@@ -1,4 +1,4 @@
-# Super simple feature extraction pipeline
+# A simple feature extraction pipeline applied to glioma data
 
 This is a simple feature extraction pipeline for most kinds of images requiring feature extraction using SITK-readable images as input. It allows for the specification of patterns which filter images and masks using regular expressions, as well as the specification of patient/study identifiers in a similar manner and of a radiomics config file.
 
